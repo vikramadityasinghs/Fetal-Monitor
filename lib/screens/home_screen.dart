@@ -17,6 +17,37 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+void calculate_Bpm(){
+ Input: signal
+ Output: indices s
+ smoothed: = [];
+  for index in signal do
+    smoothed.push(average(signal[index - 2],
+                          signal[index - 1], 
+                          signal[index],
+                          signal[index + 1],
+                          signal[index + 2]));
+  end
+peakIndices: = [];
+peakIndex = null;
+peakValue = null;
+for index, value in smoothed do
+  if value baseline then
+if peak Value == null or value > peak Value
+  then peakIndex = index;
+peakValue = value;
+end
+else if value < baseline and peakIndex != null then
+peakIndices.push(peakIndex);
+peakIndex = null;
+peakValue: = null;
+end
+end
+if peakIndex != null then peakIndices.push(peakIndex);
+end
+return peakIndices;
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
